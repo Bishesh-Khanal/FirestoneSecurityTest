@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Users collection: only owner can read/write
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // Posts collection
+    match /posts/{postId} {
+      // Authenticated users can read posts
+      allow read: if request.auth != null;
+
+      // Create: user can create a post with their own authorId
+      allow create: if request.auth != null
+                    && request.auth.uid == request.resource.data.authorId;
+
+      // Update/Delete: only the original author can modify their post
+      allow update, delete: if request.auth != null
+                            && resource.data.authorId == request.auth.uid;
+    }
+
+  }
+}

@@ -1,0 +1,10 @@
+Firestore Security Rules Vulnerability Report
+Project: firestonesecuritytest
+
+Test File: C:\Users\bishe\Desktop\Kyra\8. firestoneSecurityTest\firestoreRules.test.js
+  [PASSED] Firestore Security Rules - User can read/write their own document
+  [PASSED] Firestore Security Rules - User cannot read another user's document
+  [PASSED] Firestore Security Rules - Unauthenticated user cannot write
+  [PASSED] Firestore Security Rules - Authenticated user can read posts but only update own post
+  [PASSED] Firestore Security Rules - Automated XSS-style input scan
+
